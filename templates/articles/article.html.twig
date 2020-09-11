@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{article.titre}}
+{% endblock %}
+
+{% block body %}
+{{dump(article)}}
+	<img src="./public/uploads/images/featured/{{article.featuredImage}}">
+	<h1>{{ article.titre }}</h1>
+	<p> Publié le {{ article.createAt|date('d/m/Y à h\\hi') }}</p>
+	<p>Catégories :
+		{% for categorie in article.categories %}
+			{{ categorie.name }}
+		{% endfor %}
+	</p>
+	<div>{{ article.contenu|raw }}</div>
+	<h2> Commentaires ({{ article.commentaires|length}})</h2>
+	{% for commentaire in article.commentaires %}
+		<p>Publié par {{commentaire.pseudo}}, le {{ commentaire.createdAt|date('d/m/Y à h\\hi') }} </p>
+		<div>{{commentaire.contenu}}</div>
+	{% else %}
+		<p> Il n'y a pas de commentaire, pour l'instant.</p>
+			
+		
+	{% endfor %}
+
+	<h2>Ajoutez un commentaire</h2>
+	{{form(formComment)}}
+
+{% endblock %}
