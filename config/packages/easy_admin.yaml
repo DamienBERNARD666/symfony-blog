@@ -68,4 +68,4 @@ easy_admin:
             form:
                 fields:
                     - email
-                    - { property: 'roles', label: 'Rôles', type: choice, type_options: {expanded: true, multiple: true, choices: {'Utilisateur':'ROLE_USER', 'Administrateur':'ROLE_ADMIN'}}}
+                    - { property: 'roles', label: 'Rôles', type: choice, type_options: {expanded: true, multiple: true, choices: {'Utilisateur':'ROLE_USER','Editeur':'ROLE_EDITOR' , 'Administrateur':'ROLE_ADMIN'}}}

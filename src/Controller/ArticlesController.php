@@ -41,7 +41,7 @@ class ArticlesController extends AbstractController
     }
     
     /**
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_EDITOR")
      * @Route("/article/new", name="ajout_article")
      */
     public function ajoutArticle(Request $request){

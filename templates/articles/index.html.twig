@@ -4,19 +4,6 @@
 {% endblock %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
-
 	{% for message in app.flashes('message') %}
 		<div class="alert alert-success" role="alert">
 			{{message}}
@@ -24,23 +11,32 @@
 	{% endfor %}
 
 
-	<h1 class="text-center">Liste des articles</h1>
-	{% for article in articles %}
+	<h1 class="h2 pb-3 font-weight-bold text-left">Le Blog de Damien</h1>
 
-		<div class="card">
-			<div class="card-header">
-				{{ article.titre }}
-			</div>
-			<div class="card-body">
-				<p class="text-right text-muted">
+	{% if is_granted('ROLE_EDITOR') %}
+		<div class="pb-5">
+			<a href="{{ path('actualites_ajout_article')}}" class="btn btn-sm btn-info">Ajouter un article</a>
+
+		</div>
+
+
+	{% endif %}
+
+	{% for article in articles %}
+		<div class="py-1 border-bottom">
+			<div class=" d-flex justify-content-left align-content-left">
+				<a class="text-decoration-none text-info font-weight-bold" href="{{ path('actualites_article', {'slug': article.slug}) }}">{{ article.titre }}</a>
+				<p class="pl-4 text-muted">
+					crée le
 					{{article.createAt |date('d/m/Y à h\\hi')}}
 				</p>
-				{{ article.contenu|raw }}
-
-
-				<a href="{{ path('actualites_article', {'slug': article.slug}) }}" class="btn btn-sm btn-primary">Voir l'article</a>
+			</div>
+			<div class="text-left">
+				{{article.contenu|raw}}
 			</div>
 		</div>
+
+
 	{% endfor %}
-{% endblock %}
+	{% endblock %}
 

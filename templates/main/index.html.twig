@@ -1,8 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon blog!{% endblock %}
+{% block title %}Mon blog!
+{% endblock %}
+
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+{% endblock %}
 
 {% block body %}
-<h1>Mon Blog</h1>
-<p>Ceci est la page d'accueil!</p>
+	<div class="row">
+		<div class="col-12">
+
+			<h1 class=" h2 text-center m-3 font-weight-bold">Damien, développeur web junior</h1>
+			<p class="text-center m-3">Programmation, études, témoignages</p>
+
+		</div>
+
+		<div class="col-12 p-3 d-flex justify-content-center align-content-center">
+
+			<img class="rounded-circle img-fluid" src="{{ asset('assets/img/IMG_20200529_164815_775.jpg')}}" alt="photo de profil">
+			
+		</div>
+        <div class="col-12 text-center">
+        <p>Autodidacte et passionné, je suis un développeur curieux et ayant soif d'apprendre. Ce blog est réalisé avec Symfony "from scratch".</p>
+        </div>
+
+	</div>
+
+
 {% endblock %}
+

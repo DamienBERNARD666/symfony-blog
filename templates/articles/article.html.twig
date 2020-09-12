@@ -6,7 +6,6 @@
 
 {% block body %}
 {{dump(article)}}
-	<img src="./public/uploads/images/featured/{{article.featuredImage}}">
 	<h1>{{ article.titre }}</h1>
 	<p> Publié le {{ article.createAt|date('d/m/Y à h\\hi') }}</p>
 	<p>Catégories :
