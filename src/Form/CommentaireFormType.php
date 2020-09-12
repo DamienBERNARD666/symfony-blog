@@ -17,8 +17,6 @@ class CommentaireFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
-            ->add('email', EmailType::class)
             ->add('pseudo', TextType::class)
             ->add('contenu', TextareaType::class)
             ->add('rgpd', CheckboxType::class, [

@@ -82,6 +82,9 @@ class ArticlesController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
 
+            $user = $this->getUser();
+
+            $commentaires->setEmail($user->getEmail());
             $commentaires->setArticles($article);
             $commentaires->setCreatedAt(new DateTime('now'));
 

@@ -19,12 +19,25 @@
 		<p>Publié par {{commentaire.pseudo}}, le {{ commentaire.createdAt|date('d/m/Y à h\\hi') }} </p>
 		<div>{{commentaire.contenu}}</div>
 	{% else %}
-		<p> Il n'y a pas de commentaire, pour l'instant.</p>
+		<p class="text-muted"> Il n'y a pas de commentaire, pour l'instant.</p>
 			
 		
 	{% endfor %}
 
 	<h2>Ajoutez un commentaire</h2>
+
+	{% if is_granted('ROLE_USER') %}
+
 	{{form(formComment)}}
+
+	{% else %}
+	
+	<p class="text-muted">Vous devez être connecté pour saisir un commentaire.</p>
+
+	{% endif %}
+	
+
+	
+
 
 {% endblock %}
