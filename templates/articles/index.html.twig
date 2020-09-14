@@ -15,7 +15,9 @@
 
 	{% if is_granted('ROLE_EDITOR') %}
 		<div class="pb-5">
-			<a href="{{ path('actualites_ajout_article')}}" class="btn btn-sm btn-info">Ajouter un article <i class="fas fa-pen"></i></a>
+			<a href="{{ path('actualites_ajout_article')}}" class="btn btn-sm btn-info">Ajouter un article
+				<i class="fas fa-pen"></i>
+			</a>
 
 		</div>
 
@@ -31,14 +33,17 @@
 					{{article.createAt |date('d/m/Y à h\\hi')}}
 				</p>
 			</div>
-			<p> <img src="{{ vich_uploader_asset(article, 'imageFile' ) | imagine_filter('vignettes')}}" alt="{{ article.titre }}">
+			<p>
+				<img src="{{ vich_uploader_asset(article, 'imageFile' ) | imagine_filter('vignettes')}}" alt="{{ article.titre }}">
 			</p>
 			<div class="text-left">
-				{{article.contenu|raw}}
+				{{article.contenu|striptags|u.truncate(40, '...')|raw|nl2br}}
 			</div>
 		</div>
-
-
 	{% endfor %}
-	{% endblock %}
+	<div class="navigation py-sm-1">
+		{{ knp_pagination_render(articles) }}
+	</div>
+
+{% endblock %}
 

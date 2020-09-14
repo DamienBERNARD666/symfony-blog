@@ -29,9 +29,9 @@ class ArticlesController extends AbstractController
         $donnees = $this->getDoctrine()->getRepository(Articles::class)->findBy([],['create_at' => 'desc']);
         
         $articles = $paginator->paginate(
-            $donnees,
-            $request->query->getInt('page', 1),
-            6
+            $donnees, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            4 // Nombre de résultats par page
         );
         
         //dd($articles);
