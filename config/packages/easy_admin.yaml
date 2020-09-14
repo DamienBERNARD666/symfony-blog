@@ -12,6 +12,7 @@ easy_admin:
             - { entity: 'Articles', label: 'Articles', icon: 'book' }
             - { entity: 'Categories', label: 'Catégories', icon: 'tag' }
             - { entity: 'MotsCles', label: 'Mots Clés', icon: 'tag' }
+            - { entity: 'Commentaires', label: 'Commentaires', icon: 'tag'}
             - { label: 'Utilisateurs' }
             - { entity: 'Users', label: 'Utilisateurs', icon: 'user' }
     formats:
@@ -69,3 +70,20 @@ easy_admin:
                 fields:
                     - email
                     - { property: 'roles', label: 'Rôles', type: choice, type_options: {expanded: true, multiple: true, choices: {'Utilisateur':'ROLE_USER','Editeur':'ROLE_EDITOR' , 'Administrateur':'ROLE_ADMIN'}}}
+        Commentaires:
+            class: App\Entity\Commentaires
+            label: 'Commentaires'
+            list:
+                fields:
+                    - id
+                    - contenu
+                    - actif
+                    - email
+                    - pseudo
+                    - rgpd
+                    - { property: 'created_at', label: 'Créé' }
+                sort: ['created_at', 'desc']
+            form:
+                fields:
+                    - contenu
+                

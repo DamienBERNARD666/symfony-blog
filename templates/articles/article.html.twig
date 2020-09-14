@@ -5,18 +5,23 @@
 {% endblock %}
 
 {% block body %}
-{{dump(article)}}
-	<h1>{{ article.titre }}</h1>
-	<p> Publié le {{ article.createAt|date('d/m/Y à h\\hi') }}</p>
-	<p>Catégories :
+	<a class="text-info font-weight-light py-sm-5 text-decoration-none" href="{{ path('actualites_articles')}}">Retour à la liste des articles</a>
+
+
+	<h1 class="font-weight-bold">{{ article.titre }}</h1>
+	<p class="text-muted"> Publié le {{ article.createAt|date('d/m/Y à h\\hi') }}</p>
+	<p class="text-muted">Catégories :
 		{% for categorie in article.categories %}
 			{{ categorie.name }}
 		{% endfor %}
 	</p>
-	<div>{{ article.contenu|raw }}</div>
-	<h2> Commentaires ({{ article.commentaires|length}})</h2>
+	<p>
+	<img src="{{ vich_uploader_asset(article, 'imageFile' ) | imagine_filter('article')}}" alt="{{ article.titre }}">
+	</p>
+	<div class="py-3">{{ article.contenu|raw }}</div>
+	<h3 class="font-weight-bold"> Commentaires ({{ article.commentaires|length}})</h3>
 	{% for commentaire in article.commentaires %}
-		<p>Publié par {{commentaire.pseudo}}, le {{ commentaire.createdAt|date('d/m/Y à h\\hi') }} </p>
+		<p class="text-muted border-top py-1">Publié par {{commentaire.pseudo}}, le {{ commentaire.createdAt|date('d/m/Y à h\\hi') }} </p>
 		<div>{{commentaire.contenu}}</div>
 	{% else %}
 		<p class="text-muted"> Il n'y a pas de commentaire, pour l'instant.</p>
@@ -24,7 +29,7 @@
 		
 	{% endfor %}
 
-	<h2>Ajoutez un commentaire</h2>
+	<h2 class="pt-5 font-weight-bold">Ajoutez un commentaire</h2>
 
 	{% if is_granted('ROLE_USER') %}
 
@@ -35,6 +40,7 @@
 	<p class="text-muted">Vous devez être connecté pour saisir un commentaire.</p>
 
 	{% endif %}
+
 	
 
 	
