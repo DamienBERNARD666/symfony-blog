@@ -33,6 +33,12 @@ class ArticlesRepository extends ServiceEntityRepository
 
     }
 
+    public function apiFindOneById($id): array {
+        $qb = $this->createQueryBuilder('a')->select('a.id', 'a.titre', 'a.contenu', 'a.featured_image', 'a.create_at')->where('a.id = :id')->setParameter('id', $id);
+
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
     // /**
     //  * @return Articles[] Returns an array of Articles objects
     //  */
