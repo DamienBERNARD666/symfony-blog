@@ -21,8 +21,7 @@ class AjoutArticleFormType extends AbstractType
             ->add('titre')
             ->add('contenu', CKEditorType::class)
             ->add('imageFile', VichImageType::class, [
-                'label' => 'Image mise en avant',
-                'download_label' => 'Pouet'
+                'label' => 'Image (.jpg ou .png)'
             ])
             ->add('mots_cles', EntityType::class, [
                 'class' => MotsCles::class,
