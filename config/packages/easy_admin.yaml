@@ -86,4 +86,5 @@ easy_admin:
             form:
                 fields:
                     - contenu
+                    - pseudo
                 

@@ -9,7 +9,7 @@
 
 
 	<h1 class="font-weight-bold">{{ article.titre }}</h1>
-	<p class="text-muted"> Publié le {{ article.createAt|date('d/m/Y à h\\hi') }}</p>
+	<p class="text-muted"> Publié le {{ article.createAt|format_datetime('medium', 'short', locale='fr') }}</p>
 	<p class="text-muted">Catégories :
 		{% for categorie in article.categories %}
 			{{ categorie.name }}
@@ -21,7 +21,7 @@
 	<div class="py-3">{{ article.contenu|raw }}</div>
 	<h3 class="font-weight-bold"> Commentaires ({{ article.commentaires|length}})</h3>
 	{% for commentaire in article.commentaires %}
-		<p class="text-muted border-top py-1">Publié par {{commentaire.pseudo}}, le {{ commentaire.createdAt|date('d/m/Y à h\\hi') }} </p>
+		<p class="text-muted border-top py-1">Publié par {{commentaire.pseudo}}, le {{ commentaire.createdAt|format_datetime('medium', 'short', locale='fr')}} </p>
 		<div>{{commentaire.contenu}}</div>
 	{% else %}
 		<p class="text-muted"> Il n'y a pas de commentaire, pour l'instant.</p>

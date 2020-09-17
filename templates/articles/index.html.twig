@@ -30,7 +30,7 @@
 				<a class="text-decoration-none text-info font-weight-bold" href="{{ path('actualites_article', {'slug': article.slug}) }}">{{ article.titre }}</a>
 				<p class="pl-4 text-muted">
 					crée le
-					{{article.createAt |date('d/m/Y à h\\hi')}}
+					{{article.createAt|format_datetime('full', 'short', locale='fr')}}
 				</p>
 			</div>
 			<p>

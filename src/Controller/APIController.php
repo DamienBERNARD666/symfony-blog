@@ -23,7 +23,7 @@ class APIController extends AbstractController
      */
     public function getAllArticles(ArticlesRepository $articlesRepo)
     {
-       $articles = $articlesRepo->apiFindAll();
+       $articles = $articlesRepo->findAll();
        $encoders =  [new JsonEncoder()];
        $normalizers = [new ObjectNormalizer() ];
 
